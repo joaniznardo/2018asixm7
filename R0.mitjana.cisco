@@ -1,0 +1,12 @@
+!router 0 (R0)
+en
+conf t
+interface GigabitEthernet 0/0
+ip address 10.0.1.1 255.255.255.0
+no shut
+end
+conf t
+interface GigabitEthernet 0/2
+ip address 10.0.3.1 255.255.255.0
+no shut
+end
