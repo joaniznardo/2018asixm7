@@ -19,3 +19,33 @@ network 10.0.3.0 0.0.0.255 area 0
 ! identificador de router - se fa servir per ...
 router-id 1.1.1.1
 end
+!! -- 
+!! configura dhcp server
+!! -- 
+conf t
+!! 
+!! - xarxa 1: reservar ips i crear una reserva de ips
+!!
+ip dhcp excluded-address 10.0.2.1 10.0.2.20
+ip dhcp pool XARXA-2
+network 10.0.2.0 255.255.255.0
+default-router 10.0.2.1 
+dns-server 8.8.8.8
+end
+
+conf t
+!! 
+!! - reservem ips
+!!
+ip dhcp excluded-address 10.0.3.1 10.0.3.20
+ip dhcp pool XARXA-3
+network 10.0.3.0 255.255.255.0
+default-router 10.0.3.1 
+dns-server 8.8.8.8
+end
+!! 
+!! - permetem la sol·licitud de ips per part de xarxes remotes
+!!
+conf t
+ip dhcp relay information trust-all 
+end
