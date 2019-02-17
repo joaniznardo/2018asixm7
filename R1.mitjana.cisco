@@ -10,3 +10,12 @@ interface GigabitEthernet 0/2
 ip address 10.0.2.1 255.255.255.0
 no shut
 end
+conf t
+! 10: identificador de procés - no ha de concordar amb la resta
+router ospf 10
+! configurem les interfícies que parlaran ospf
+network 10.0.1.0 0.0.0.255 area 0
+network 10.0.2.0 0.0.0.255 area 0
+! identificador de router - se fa servir per ...
+router-id 2.2.2.2
+end
